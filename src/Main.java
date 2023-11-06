@@ -15,11 +15,28 @@ public class Main
 
     public static boolean hasPattern(String word)
     {
+        String letterAfterA = "";
         for(int i = 0; i < word.length(); i++)
         {
             if(word.indexOf("A") == i)
             {
-                return true;
+                if(word.length() == (i + 1))
+                {
+                    letterAfterA = word.substring(i + 1);
+                }
+                if(word.length() > (i + 1))
+                {
+                    letterAfterA = word.substring(i + 1, i + 2);
+                }
+                if(!letterAfterA.equals("A"))
+                {
+                    return true;
+                }
+                else
+                {
+                    word = word.substring(0, i) + word.substring(i + 1);
+                    i--;
+                }
             }
         }
         return false;
